@@ -1,0 +1,53 @@
+name: TGLabNBA
+options:
+  bundleIdPrefix: com.islamswira
+  deploymentTarget:
+    iOS: "17.0"
+  xcodeVersion: "15.0"
+  generateEmptyDirectories: true
+packages:
+  Kingfisher:
+    url: https://github.com/onevcat/Kingfisher.git
+    from: "8.0.0"
+targets:
+  TGLabNBA:
+    type: application
+    platform: iOS
+    sources:
+      - TGLabNBA
+    resources:
+      - path: TGLabNBA/Resources
+        buildPhase: resources
+      - path: TGLabNBA/Assets.xcassets
+        buildPhase: resources
+    dependencies:
+      - package: Kingfisher
+    settings:
+      base:
+        SWIFT_VERSION: "5.0"
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_UIApplicationSceneManifest_Generation: YES
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        PRODUCT_BUNDLE_IDENTIFIER: com.islamswira.TGLabNBA
+  TGLabNBATests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - TGLabNBATests
+    dependencies:
+      - target: TGLabNBA
+    settings:
+      base:
+        SWIFT_VERSION: "5.0"
+        GENERATE_INFOPLIST_FILE: YES
+  TGLabNBAUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    sources:
+      - TGLabNBAUITests
+    dependencies:
+      - target: TGLabNBA
+    settings:
+      base:
+        SWIFT_VERSION: "5.0"
+        GENERATE_INFOPLIST_FILE: YES
